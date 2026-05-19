@@ -31,13 +31,13 @@ namespace MechanicShop.Domain.Customers
         public static Result<Customer>Create(Guid id, string name, string phoneNumber, string email, List<Vehicle>vehicles)
         {
             if (string.IsNullOrWhiteSpace(name))
-                return CustomerError.NameRequired;
+                return CustomerErrors.NameRequired;
 
             if (string.IsNullOrWhiteSpace(phoneNumber) || !Regex.IsMatch(phoneNumber, @"^\+?\d{7,15}$"))
-                return CustomerError.InValidPhoneNumber;
+                return CustomerErrors.InValidPhoneNumber;
 
             if(string.IsNullOrWhiteSpace(email))
-                return CustomerError.EmailRequired;
+                return CustomerErrors.EmailRequired;
 
             try
             {
@@ -45,7 +45,7 @@ namespace MechanicShop.Domain.Customers
             }
             catch
             {
-                return CustomerError.EmailInvalid;
+                return CustomerErrors.EmailInvalid;
             }
 
             return new Customer(id, name, phoneNumber, email, vehicles);
@@ -54,13 +54,13 @@ namespace MechanicShop.Domain.Customers
         public Result<Updated> Update(string name, string phone, string email)
         {
             if(string.IsNullOrWhiteSpace(name))
-                return CustomerError.NameRequired;
+                return CustomerErrors.NameRequired;
 
             if (string.IsNullOrWhiteSpace(phone) || !Regex.IsMatch(phone, @"^\+?\d{7,15}$"))
-                return CustomerError.InValidPhoneNumber;
+                return CustomerErrors.InValidPhoneNumber;
 
             if (string.IsNullOrWhiteSpace(email))
-                return CustomerError.EmailRequired;
+                return CustomerErrors.EmailRequired;
 
             Name = name;
             Phone = phone;
@@ -69,7 +69,7 @@ namespace MechanicShop.Domain.Customers
             return Result.Updated;
         }
 
-        public async Task<Result<Updated>> UpsertParts(List<Vehicle> incomingVehicles)
+        public Result<Updated> UpsertParts(List<Vehicle> incomingVehicles)
         {
             _vehicles.RemoveAll(existing => incomingVehicles.All(v => v.Id != existing.Id));
 

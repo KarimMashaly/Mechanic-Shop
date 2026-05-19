@@ -9,6 +9,7 @@ namespace MechanicShop.Domain.Customers.Vehicles
         public string? Model { get; set; }
         public int Year { get; set; }
         public string? LicensePlate { get; set; }
+        public Guid CustomerId { get; private set; }
         public Customer? Customer { get; set; }
 
         private Vehicle() { }
