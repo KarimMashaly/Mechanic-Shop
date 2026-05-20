@@ -12,5 +12,7 @@ namespace MechanicShop.Domain.RepairTasks
         Error.Validation("RepairTask.Duration.Invalid", "Invalid duration selected.");
         public static Error DuplicateName =>
             Error.Conflict("RepairTaskPart.Duplicate", "A part with the same name already exists in this repair task.");
+        public static Error InUse 
+            => Error.Conflict("RepairTask.InUse", "Cannot delete a repair task that is used in work orders.");
     }
 }
