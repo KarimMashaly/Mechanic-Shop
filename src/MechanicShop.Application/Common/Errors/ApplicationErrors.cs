@@ -18,5 +18,52 @@ namespace MechanicShop.Application.Common.Errors
             => Error.NotFound(
                 "RepairTask.NotFound",
                 "Repair task does not exist.");
+
+        public static Error VehicleNotFound =>
+               Error.NotFound(
+           "ApplicationErrors.Vehicle.NotFound",
+           "Vehicle does not exist.");
+
+        public static Error WorkOrderNotFound =>
+               Error.NotFound(
+           "ApplicationErrors.WorkOrder.NotFound",
+           "WorkOrder does not exist.");
+
+        public static Error LaborNotFound =>
+               Error.NotFound(
+           "ApplicationErrors.Labor.NotFound",
+           "Labor does not exist.");
+
+        public static Error LaborOccupied =>
+            Error.Conflict(
+           "Employee.LaborOccupied",
+           "Labor is already occupied during the requested time.");
+
+        public static Error VehicleSchedulingConflict =>
+            Error.Conflict(
+                "Vehicle_Overlapping_WorkOrder",
+                "The vehicle already has an overlapping WorkOrder.");
+
+        public static Error WorkOrderMustBeCompletedForInvoicing =>
+            Error.Conflict(
+                "WorkOrder.InvoiceIssuance.InvalidState",
+                "WorkOrder must be in 'Completed' state to issue an invoice.");
+
+        public static Error InvoiceNotFound => 
+            Error.NotFound(
+               "ApplicationErrors.Invoice.NotFound",
+               "Invoice does not exist.");
+
+        public static readonly Error ExpiredAccessTokenInvalid = Error.Conflict(
+         code: "Auth.ExpiredAccessToken.Invalid",
+         description: "Expired access token is not valid.");
+
+        public static readonly Error UserIdClaimInvalid = Error.Conflict(
+        code: "Auth.UserIdClaim.Invalid",
+        description: "Invalid userId claim.");
+
+        public static readonly Error RefreshTokenExpired = Error.Conflict(
+        code: "Auth.RefreshToken.Expired",
+        description: "Refresh token is invalid or has expired.");
     }
 }

@@ -4,7 +4,7 @@ namespace MechanicShop.Domain.WorkOrders.Billing
 {
     public sealed class InvoiceLineItem
     {
-        public int LineItem { get; }
+        public int LineNumber { get; }
         public string? Description { get; }
         public int Qunatity { get; }
         public decimal UnitPrice { get; }
@@ -16,7 +16,7 @@ namespace MechanicShop.Domain.WorkOrders.Billing
         private InvoiceLineItem(Guid invoiceId, int lineItem, string description, int quantity, decimal unitPrice)
         {
             InvoiceId = invoiceId;
-            LineItem = lineItem;
+            LineNumber = lineItem;
             Description = description;
             Qunatity = quantity;
             UnitPrice = unitPrice;

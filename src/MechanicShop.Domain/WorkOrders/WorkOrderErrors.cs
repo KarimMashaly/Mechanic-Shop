@@ -40,5 +40,9 @@ namespace MechanicShop.Domain.WorkOrders
         public static Error InvalidStateTransition(WorkOrderState current, WorkOrderState next) => Error.Conflict(
         code: "WorkOrderErrors.InvalidStateTransition",
         description: $"WorkOrder Invalid State transition from '{current}' to '{next}'.");
+
+        public static Error StateTransitionNotAllowed(DateTimeOffset startAtUtc) => Error.Conflict(
+       code: "WorkOrderErrors.StateTransitionNotAllowed",
+       description: $"State transition is not allowed before the work order’s scheduled start time {startAtUtc:yyyy-MM-dd HH:mm} UTC.");
     }
 }

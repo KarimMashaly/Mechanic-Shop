@@ -3,6 +3,7 @@ using MechanicShop.Domain.Common.Results;
 using MechanicShop.Domain.Customers.Vehicles;
 using MechanicShop.Domain.Employees;
 using MechanicShop.Domain.RepairTasks;
+using MechanicShop.Domain.WorkOrders.Billing;
 using MechanicShop.Domain.WorkOrders.Enums;
 
 namespace MechanicShop.Domain.WorkOrders
@@ -19,6 +20,7 @@ namespace MechanicShop.Domain.WorkOrders
         public Employee? Labor {  get;  set; }
         public Guid VehicleId { get; set; }
         public Vehicle? Vehicle { get; set; }
+        public Invoice? Invoice { get; set; }
         public decimal? TotalPartsCost => _repairTasks.SelectMany(rt => rt.Parts).Sum(p => p.Cost);
         public decimal? TotalLaborCost => _repairTasks.Sum(rt => rt.LaborCost);
         public decimal? Total => (TotalPartsCost ?? 0) + (TotalLaborCost ?? 0);
