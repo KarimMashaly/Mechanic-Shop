@@ -38,7 +38,7 @@ namespace MechanicShop.Application.Features.Billing.Mappers
                 InvoiceId = entity.InvoiceId,
                 LineNumber = entity.LineNumber,
                 Description = entity.Description,
-                Quantity = entity.Qunatity,
+                Quantity = entity.Quantity,
                 UnitPrice = entity.UnitPrice,
                 LineTotal = entity.LineTotal
             };

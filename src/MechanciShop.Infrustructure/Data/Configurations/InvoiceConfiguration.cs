@@ -52,7 +52,7 @@ namespace MechanciShop.Infrustructure.Data.Configurations
                     .HasPrecision(18, 2)
                     .IsRequired();
 
-                    items.Property(i => i.Qunatity)
+                    items.Property(i => i.Quantity)
                     .IsRequired();
 
                     items.Property(i => i.Description)
