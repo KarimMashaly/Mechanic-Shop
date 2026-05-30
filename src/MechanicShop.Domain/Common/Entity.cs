@@ -1,10 +1,14 @@
-﻿namespace MechanicShop.Domain.Common
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MechanicShop.Domain.Common
 {
     public abstract class Entity
     {
         public Guid Id { get;}
 
         private readonly List<DomainEvent> _domainEvents = new();
+        [NotMapped]
+        public IReadOnlyCollection<DomainEvent> DomainEvents => _domainEvents.AsReadOnly();
         protected Entity() { }
 
         protected Entity(Guid id)
