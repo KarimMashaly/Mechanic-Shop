@@ -6,9 +6,9 @@ namespace MechanicShop.Domain.WorkOrders.Billing
     {
         public int LineNumber { get; }
         public string? Description { get; }
-        public int Qunatity { get; }
+        public int Quantity { get; }
         public decimal UnitPrice { get; }
-        public decimal LineTotal => Qunatity * UnitPrice;
+        public decimal LineTotal => Quantity * UnitPrice;
         public Guid InvoiceId { get; }
 
         private InvoiceLineItem() { }
@@ -18,7 +18,7 @@ namespace MechanicShop.Domain.WorkOrders.Billing
             InvoiceId = invoiceId;
             LineNumber = lineItem;
             Description = description;
-            Qunatity = quantity;
+            Quantity = quantity;
             UnitPrice = unitPrice;
         }
 
