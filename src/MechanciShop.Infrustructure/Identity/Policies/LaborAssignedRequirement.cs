@@ -1,0 +1,55 @@
+﻿using MechanicShop.Application.Common.Interfaces;
+using MechanicShop.Domain.Identity;
+
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+
+using System.Security.Claims;
+
+
+namespace MechanciShop.Infrustructure.Identity.Policies
+{
+    public class LaborAssignedRequirement : IAuthorizationRequirement;
+
+    public class LaborAssignedHandler(IAppDbContext context, IHttpContextAccessor httpContextAccessor) : AuthorizationHandler<LaborAssignedRequirement>
+    {
+        private readonly IAppDbContext _context = context;
+        private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
+
+        protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, LaborAssignedRequirement requirement)
+        {
+            var userId = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                context.Fail();
+                return;
+            }
+
+            var workOrderIdString = _httpContextAccessor.HttpContext?.Request.RouteValues["WorkOrderId"]?.ToString();
+
+            if(!Guid.TryParse(workOrderIdString, out Guid workOrderId))
+            {
+                context.Fail();
+                return;
+            }
+
+            var isAssigned = _context.WorkOrders
+                .Any(w => w.Id == workOrderId && w.LaborId == Guid.Parse(userId));
+
+            if(isAssigned)
+            {
+                context.Succeed(requirement);
+                return;
+            }
+
+            if(context.User.IsInRole(nameof(Role.Manager)))
+            {
+                context.Succeed(requirement);
+                return;
+            }
+
+            context.Fail();
+        }
+    }
+}
