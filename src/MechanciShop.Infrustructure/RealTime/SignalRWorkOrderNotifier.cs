@@ -1,0 +1,14 @@
+﻿using MechanciShop.Infrustructure.RealTime;
+using MechanicShop.Application.Common.Interfaces;
+using Microsoft.AspNetCore.SignalR;
+
+namespace MechanciShop.Infrustructure.RealTiIme
+{
+    public class SignalRWorkOrderNotifier(IHubContext<WorkOrderHub> hubContext) : IWorkOrderNotifier
+    {
+        private readonly IHubContext<WorkOrderHub> _hubContext = hubContext;
+
+        public Task NotifyWorkOrdersChangedAsync(CancellationToken ct = default) =>
+            _hubContext.Clients.All.SendAsync("WorkOrderChanged", ct);
+    }
+}
