@@ -9,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MechanicShop.Application.Features.Customers.Queries.GetCustomers
 {
-    public class GetCustomerQueryHandler(
+    public class GetCustomersQueryHandler(
         IAppDbContext context)
-        : IRequestHandler<GetCustomerQuery, Result<List<CustomerDto>>>
+        : IRequestHandler<GetCustomersQuery, Result<List<CustomerDto>>>
     {
         private readonly IAppDbContext _context = context;
 
-        public async Task<Result<List<CustomerDto>>> Handle(GetCustomerQuery query, CancellationToken ct)
+        public async Task<Result<List<CustomerDto>>> Handle(GetCustomersQuery query, CancellationToken ct)
         {
             var customers = await _context.Customers
                 .AsNoTracking()

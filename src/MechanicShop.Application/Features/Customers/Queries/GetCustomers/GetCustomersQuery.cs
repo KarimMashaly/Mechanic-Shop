@@ -4,7 +4,7 @@ using MechanicShop.Domain.Common.Results;
 
 namespace MechanicShop.Application.Features.Customers.Queries.GetCustomers
 {
-    public sealed record GetCustomerQuery : ICachedQuery<Result<List<CustomerDto>>>
+    public sealed record GetCustomersQuery : ICachedQuery<Result<List<CustomerDto>>>
     {
         public string CacheKey => "customers";
 
