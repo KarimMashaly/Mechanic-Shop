@@ -16,7 +16,7 @@ namespace MechanicShop.Application.Features.Customers.Mappers
                 Name = entity.Name!,
                 PhoneNumber = entity.Phone!,
                 Email = entity.Email!,
-                Vehicles = entity.Vehicles.Select(v => v.ToDto()).ToList() ?? []
+                Vehicles = entity.Vehicles?.Select(v => v.ToDto()).ToList() ?? []
             };
 
         }

@@ -35,7 +35,7 @@ namespace MechanicShop.Application.Common.Behaviours
 
             if(result is null)
             {
-                await next(ct);
+                result = await next(ct);
 
                 if(result is IResult res && res.IsSuccess)
                 {
