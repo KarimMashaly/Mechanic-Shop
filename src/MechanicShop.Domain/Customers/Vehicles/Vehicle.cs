@@ -12,6 +12,8 @@ namespace MechanicShop.Domain.Customers.Vehicles
         public Guid CustomerId { get; private set; }
         public Customer? Customer { get; set; }
 
+        public string VehicleInfo => $"{Make} | {Model} | {Year}";
+
         private Vehicle() { }
 
         private Vehicle(Guid id, string make, string model, int year, string licensePlate)
