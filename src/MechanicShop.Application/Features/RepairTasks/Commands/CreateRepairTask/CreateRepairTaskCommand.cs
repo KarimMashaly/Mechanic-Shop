@@ -9,7 +9,6 @@ namespace MechanicShop.Application.Features.RepairTasks.Commands.CreateRepairTas
     public sealed record CreateRepairTaskCommand(
         string Name,
         decimal LaborCost,
-        decimal TotalCost,
         RepairDurationInMinutes EstimatedDurationInMins,
         List<CreateRepairTaskPartCommand> Parts) : IRequest<Result<RepairTaskDto>>;
 }
