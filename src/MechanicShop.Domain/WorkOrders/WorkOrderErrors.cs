@@ -44,5 +44,9 @@ namespace MechanicShop.Domain.WorkOrders
         public static Error StateTransitionNotAllowed(DateTimeOffset startAtUtc) => Error.Conflict(
        code: "WorkOrderErrors.StateTransitionNotAllowed",
        description: $"State transition is not allowed before the work order’s scheduled start time {startAtUtc:yyyy-MM-dd HH:mm} UTC.");
+
+        public static Error LaborIdEmpty(string id) => Error.Validation(
+        code: "WorkOrderErrors.LaborIdEmpty",
+        description: $"WorkOrder '{id}': Labor Id is empty");
     }
 }
