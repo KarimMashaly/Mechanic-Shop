@@ -12,5 +12,8 @@ namespace MechanicShop.Domain.Employees
 
         public static Error RoleInvalid =>
             Error.Validation("Employee.Role.Invalid", "Invalid role assigned to employee.");
+
+        public static readonly Error IdRequired =
+        Error.Validation("Employee.Id.Required", "Employee Id is required.");
     }
 }
