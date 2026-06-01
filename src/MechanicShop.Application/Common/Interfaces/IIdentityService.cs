@@ -7,5 +7,6 @@ namespace MechanicShop.Application.Common.Interfaces
     {
         Task<Result<AppUserDto>> AuthenticateAsync(string email, string password);
         Task<Result<AppUserDto>> GetUserByIdAsync(string UserId);
+        Task<string> GetUserNameAsync(string UserId);
     }
 }

@@ -55,11 +55,22 @@ namespace MechanciShop.Infrustructure
                     ValidateAudience = true,
                     ValidAudience = jwtSettings["Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Secret"]!)),
-                    ClockSkew = TimeSpan.Zero
+                    ClockSkew = TimeSpan.Zero,
+                    ValidateIssuerSigningKey = true,
                 };
             });
 
-            services.AddIdentityCore<AppUser>()
+            services
+                .AddIdentityCore<AppUser>(options =>
+                {
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequiredUniqueChars = 1;
+                    options.SignIn.RequireConfirmedAccount = false;
+                })
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 

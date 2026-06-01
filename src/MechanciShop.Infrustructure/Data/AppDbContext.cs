@@ -43,7 +43,7 @@ namespace MechanciShop.Infrustructure.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(typeof(AppContext).Assembly);
+            builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
         private async Task DispacteDomainEventsAsync(CancellationToken cancellationToken)
         {

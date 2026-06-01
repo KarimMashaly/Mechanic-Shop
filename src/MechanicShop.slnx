@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="MechanciShop.Infrustructure/MechanciShop.Infrustructure.csproj" Id="78bc02b9-1964-4ee8-85e7-aa71b9f7e672" />
+  <Project Path="MechanicShop.Api/MechanicShop.Api.csproj" />
+  <Project Path="MechanicShop.Application/MechanicShop.Application.csproj" Id="41ec6fa8-98ab-4234-9de7-19e2661d3688" />
+  <Project Path="MechanicShop.Client/MechanicShop.Client.csproj" Id="3dd73e91-c780-48c2-a9c6-047bd0f7eb7f" />
+  <Project Path="MechanicShop.Contracts/MechanicShop.Contracts.csproj" Id="d89bd93c-c376-49d9-83ea-12f3edf6a0dc" />
+  <Project Path="MechanicShop.Domain/MechanicShop.Domain.csproj" Id="04fed527-d658-4590-bfda-bc9c155f2238" />
+</Solution>

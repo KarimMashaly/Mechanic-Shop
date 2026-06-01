@@ -42,5 +42,12 @@ namespace MechanciShop.Infrustructure.Identity
 
             return new AppUserDto(UserId, user.Email!, roles, claims);
         }
+
+        public async Task<string> GetUserNameAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            return user?.UserName!;
+        }
     }
 }

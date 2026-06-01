@@ -80,11 +80,18 @@ namespace MechanciShop.Infrustructure.Data
 
             if (_userManager.Users.All(u => u.Email != manager.Email))
             {
-                await _userManager.CreateAsync(manager, manager.Email);
+                var result = await _userManager.CreateAsync(manager, manager.Email);
 
-                if (!string.IsNullOrWhiteSpace(managerRole.Name))
+                if (result.Succeeded)
                 {
-                    await _userManager.AddToRolesAsync(manager, [managerRole.Name]);
+                    if (!string.IsNullOrWhiteSpace(managerRole.Name))
+                        await _userManager.AddToRolesAsync(manager, [managerRole.Name]);
+                }
+                else
+                {
+                    _logger.LogError("Failed to create user {Email}: {Errors}",
+                        manager.Email,
+                        string.Join(", ", result.Errors.Select(e => e.Description)));
                 }
             }
 
@@ -98,14 +105,20 @@ namespace MechanciShop.Infrustructure.Data
 
             if (_userManager.Users.All(u => u.Email != labor01.Email))
             {
-                await _userManager.CreateAsync(labor01, labor01.Email);
+                var result = await _userManager.CreateAsync(labor01, labor01.Email);
 
-                if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                if (result.Succeeded)
                 {
-                    await _userManager.AddToRolesAsync(labor01, [laborRole.Name]);
+                    if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                        await _userManager.AddToRolesAsync(labor01, [laborRole.Name]);
+                }
+                else
+                {
+                    _logger.LogError("Failed to create user {Email}: {Errors}",
+                        labor01.Email,
+                        string.Join(", ", result.Errors.Select(e => e.Description)));
                 }
             }
-
             var labor02 = new AppUser
             {
                 Id = "8104ab20-26c2-4651-b1de-c0baf04dbbd9",
@@ -116,11 +129,18 @@ namespace MechanciShop.Infrustructure.Data
 
             if (_userManager.Users.All(u => u.Email != labor02.Email))
             {
-                await _userManager.CreateAsync(labor02, labor02.Email);
+                var result = await _userManager.CreateAsync(labor02, labor02.Email);
 
-                if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                if (result.Succeeded)
                 {
-                    await _userManager.AddToRolesAsync(labor02, [laborRole.Name]);
+                    if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                        await _userManager.AddToRolesAsync(labor02, [laborRole.Name]);
+                }
+                else
+                {
+                    _logger.LogError("Failed to create user {Email}: {Errors}",
+                        labor02.Email,
+                        string.Join(", ", result.Errors.Select(e => e.Description)));
                 }
             }
 
@@ -134,14 +154,20 @@ namespace MechanciShop.Infrustructure.Data
 
             if (_userManager.Users.All(u => u.Email != labor03.Email))
             {
-                await _userManager.CreateAsync(labor03, labor03.Email);
+                var result = await _userManager.CreateAsync(labor03, labor03.Email);
 
-                if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                if (result.Succeeded)
                 {
-                    await _userManager.AddToRolesAsync(labor03, [laborRole.Name]);
+                    if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                        await _userManager.AddToRolesAsync(labor03, [laborRole.Name]);
+                }
+                else
+                {
+                    _logger.LogError("Failed to create user {Email}: {Errors}",
+                        labor03.Email,
+                        string.Join(", ", result.Errors.Select(e => e.Description)));
                 }
             }
-
             var labor04 = new AppUser
             {
                 Id = "54cd01ba-b9ae-4c14-bab6-f3df0219ba4c",
@@ -152,11 +178,18 @@ namespace MechanciShop.Infrustructure.Data
 
             if (_userManager.Users.All(u => u.Email != labor04.Email))
             {
-                await _userManager.CreateAsync(labor04, labor04.Email);
+                var result = await _userManager.CreateAsync(labor04, labor04.Email);
 
-                if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                if (result.Succeeded)
                 {
-                    await _userManager.AddToRolesAsync(labor04, [laborRole.Name]);
+                    if (!string.IsNullOrWhiteSpace(laborRole.Name))
+                        await _userManager.AddToRolesAsync(labor04, [laborRole.Name]);
+                }
+                else
+                {
+                    _logger.LogError("Failed to create user {Email}: {Errors}",
+                        labor04.Email,
+                        string.Join(", ", result.Errors.Select(e => e.Description)));
                 }
             }
 
@@ -269,10 +302,10 @@ namespace MechanciShop.Infrustructure.Data
 
                             var workOrder = WorkOrder.Create(
                                 Guid.NewGuid(),
-                                availableVehicle.Id,
                                 Guid.Parse(laborId),
-                                endAt,
+                                availableVehicle.Id,
                                 startAt,
+                                endAt,
                                 spot,
                                 selectedTask);
 
@@ -313,10 +346,10 @@ namespace MechanciShop.Infrustructure.Data
 
                 var workOrderStartingNow = WorkOrder.Create(
                     Guid.NewGuid(),
-                    _context.Vehicles.OrderBy(_ => Guid.NewGuid()).First().Id,
                     Guid.Parse(labor01.Id),
-                    startTimeFirstOrder.AddMinutes(repairTasksForFirstOrder.Sum(rt => (int)rt.EstimatedDurationInMins)),
+                    _context.Vehicles.OrderBy(_ => Guid.NewGuid()).First().Id,
                     startTimeFirstOrder,
+                    startTimeFirstOrder.AddMinutes(repairTasksForFirstOrder.Sum(rt => (int)rt.EstimatedDurationInMins)),
                     Spot.A,
                     repairTasksForFirstOrder).Value;
 
@@ -340,10 +373,10 @@ namespace MechanciShop.Infrustructure.Data
 
                 WorkOrder value = WorkOrder.Create(
                     Guid.NewGuid(),
-                    _context.Vehicles.OrderBy(_ => Guid.NewGuid()).First().Id,
                     Guid.Parse(labor02.Id),
-                    endTimeSecondOrder,
+                    _context.Vehicles.OrderBy(_ => Guid.NewGuid()).First().Id,
                     roundedStart,
+                    endTimeSecondOrder,
                     Spot.B,
                     [repairTasksEndingNow])
                 .Value;
