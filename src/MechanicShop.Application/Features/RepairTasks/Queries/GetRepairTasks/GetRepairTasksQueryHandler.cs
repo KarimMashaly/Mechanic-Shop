@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MechanicShop.Application.Features.RepairTasks.Queries.GetRepairTasks
 {
-    public class GetRepairTaskQueryHandler(
+    public class GetRepairTasksQueryHandler(
         IAppDbContext context)
-        : IRequestHandler<GetRepairTaskQuery, Result<List<RepairTaskDto>>>
+        : IRequestHandler<GetRepairTasksQuery, Result<List<RepairTaskDto>>>
     {
         private readonly IAppDbContext _context = context;
 
-        public async Task<Result<List<RepairTaskDto>>> Handle(GetRepairTaskQuery query, CancellationToken ct)
+        public async Task<Result<List<RepairTaskDto>>> Handle(GetRepairTasksQuery query, CancellationToken ct)
         {
             var repairTasks = await _context.RepairTasks
                 .AsNoTracking()

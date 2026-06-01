@@ -4,7 +4,7 @@ using MechanicShop.Domain.Common.Results;
 
 namespace MechanicShop.Application.Features.RepairTasks.Queries.GetRepairTasks
 {
-    public sealed record GetRepairTaskQuery : ICachedQuery<Result<List<RepairTaskDto>>>
+    public sealed record GetRepairTasksQuery : ICachedQuery<Result<List<RepairTaskDto>>>
     {
         public string CacheKey => "repair-tasks";
 
