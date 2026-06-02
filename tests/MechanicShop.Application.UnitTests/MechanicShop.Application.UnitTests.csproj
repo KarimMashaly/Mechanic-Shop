@@ -17,9 +17,5 @@
 	<ItemGroup>
 		<ProjectReference Include="..\MechanicShop.Tests.Common\MechanicShop.Tests.Common.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Mappers\" />
-	</ItemGroup>
 	
 </Project>
