@@ -9,7 +9,7 @@ namespace MechanicShop.Contracts.Requests.Customers
 
         [Required(ErrorMessage = "PhoneNumber is required.")]
         [RegularExpression(@"^\+?\d{7,15}$", ErrorMessage = "Phone number must be 7–15 digits and may start with '+'.")]
-        public string Phone { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Email is invalid.")]

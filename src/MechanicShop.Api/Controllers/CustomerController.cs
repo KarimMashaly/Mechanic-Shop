@@ -78,7 +78,7 @@ namespace MechanicShop.Api.Controllers
 
             var result = await sender.Send(new CreateCustomerCommand(
                 request.Name,
-                request.Phone,
+                request.PhoneNumber,
                 request.Email,
                 vehicles),
                 ct);

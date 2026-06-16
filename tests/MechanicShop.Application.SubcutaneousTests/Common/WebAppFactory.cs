@@ -1,6 +1,6 @@
-﻿using MechanciShop.Infrustructure.BackgroundJobs;
-using MechanciShop.Infrustructure.Data;
-using MechanciShop.Infrustructure.Settings;
+﻿using MechanicShop.Infrustructure.BackgroundJobs;
+using MechanicShop.Infrustructure.Data;
+using MechanicShop.Infrustructure.Settings;
 using MechanicShop.Api;
 using MechanicShop.Application.Common.Interfaces;
 

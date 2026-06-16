@@ -1,4 +1,4 @@
-﻿using MechanciShop.Infrustructure.Identity;
+﻿using MechanicShop.Infrustructure.Identity;
 using MechanicShop.Application.Features.Identity;
 using MechanicShop.Application.Features.Identity.Queries.GenerateTokens;
 

@@ -1,5 +1,5 @@
-﻿using MechanciShop.Infrustructure.BackgroundJobs;
-using MechanciShop.Infrustructure.Data;
+﻿using MechanicShop.Infrustructure.BackgroundJobs;
+using MechanicShop.Infrustructure.Data;
 using MechanicShop.Application.Common.Interfaces;
 
 using MediatR;

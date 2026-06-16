@@ -1,8 +1,8 @@
-using MechanciShop.Infrustructure;
-using MechanciShop.Infrustructure.Data;
-using MechanciShop.Infrustructure.RealTime;
+using MechanicShop.Infrustructure;
+using MechanicShop.Infrustructure.Data;
+using MechanicShop.Infrustructure.RealTime;
+using MechanicShop.Api.Components;
 using MechanicShop.Application;
-using MechanicShop.Client;
 using Scalar.AspNetCore;
 using Serilog;
 
@@ -53,7 +53,8 @@ namespace MechanicShop.Api
             app.MapStaticAssets();
 
             app.MapRazorComponents<App>().AllowAnonymous()
-                .AddInteractiveWebAssemblyRenderMode();
+                .AddInteractiveWebAssemblyRenderMode()
+                .AddAdditionalAssemblies(typeof(MechanicShop.Client._Imports).Assembly); ;
                
 
             app.MapHub<WorkOrderHub>("/hubs/workorders");

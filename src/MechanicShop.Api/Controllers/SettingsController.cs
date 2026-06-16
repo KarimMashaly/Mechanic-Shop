@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 
-using MechanciShop.Infrustructure.Settings;
+using MechanicShop.Infrustructure.Settings;
 using MechanicShop.Contracts.Responses;
 
 using Microsoft.AspNetCore.Mvc;

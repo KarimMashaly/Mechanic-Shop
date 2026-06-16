@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/MechanciShop.Infrustructure/MechanciShop.Infrustructure.csproj" />
+    <Project Path="src/MechanicShop.Infrustructure/MechanicShop.Infrustructure.csproj" />
     <Project Path="src/MechanicShop.Api/MechanicShop.Api.csproj" />
     <Project Path="src/MechanicShop.Application/MechanicShop.Application.csproj" />
     <Project Path="src/MechanicShop.Client/MechanicShop.Client.csproj" />
@@ -14,4 +14,7 @@
     <Project Path="tests/MechanicShop.Domain.UnitTests/MechanicShop.Domain.UnitTests.csproj" />
     <Project Path="tests/MechanicShop.Tests.Common/MechanicShop.Tests.Common.csproj" />
   </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>
