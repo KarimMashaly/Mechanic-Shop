@@ -19,7 +19,7 @@ namespace MechanicShop.Tests.Common.RepairTasks
                 name ?? "Brake Inspection",
                 laborCost ?? 100,
                 repairDurationInMinutes ?? RepairDurationInMinutes.Min30,
-                parts ?? [Part.Create(Guid.NewGuid(), "Brake Pads", 50, 1).Value]);
+                parts ?? [Part.Create(Guid.NewGuid(), "Brake Pads", cost: 50, quantity: 1).Value]);
         }
     }
 }

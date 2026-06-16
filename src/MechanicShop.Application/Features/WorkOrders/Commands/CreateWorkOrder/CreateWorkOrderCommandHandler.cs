@@ -78,6 +78,13 @@ namespace MechanicShop.Application.Features.WorkOrders.Commands.CreateWorkOrder
                 return ApplicationErrors.VehicleNotFound;
             }
 
+            var labor = await context.Employees.FindAsync([command.LaborId], ct);
+
+            if (labor is null)
+            {
+                logger.LogError("Invalid LaborId: {LaborId}", command.LaborId.ToString());
+                return ApplicationErrors.LaborNotFound;
+            }
 
             var hasVehicleConflict = await context.WorkOrders
                                           . AnyAsync(a =>

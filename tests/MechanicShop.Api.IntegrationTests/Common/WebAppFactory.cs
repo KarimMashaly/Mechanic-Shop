@@ -72,6 +72,8 @@ namespace MechanicShop.Api.IntegrationTests.Common
                     options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
                     options.UseSqlServer(_dbContainer.GetConnectionString());
                 });
+
+                services.AddHybridCache();
             });
         }
     }

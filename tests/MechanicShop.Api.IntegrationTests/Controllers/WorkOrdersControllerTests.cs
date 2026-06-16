@@ -597,7 +597,7 @@ namespace MechanicShop.Api.IntegrationTests.Controllers
 
             var request = new HttpRequestMessage(HttpMethod.Get, $"/api/v1.0/workorders/schedule/{today:yyyy-MM-dd}");
 
-            request.Headers.Add("X-TimeZone", "America/Montreal");
+            request.Headers.Add("X-TimeZone", "Eastern Standard Time");
 
             var response = await _client.SendAsync(request);
 
@@ -631,7 +631,7 @@ namespace MechanicShop.Api.IntegrationTests.Controllers
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, $"/api/v1.0/workorders/schedule/{today:yyyy-MM-dd}");
 
-                request.Headers.Add("X-TimeZone", "America/Montreal");
+                request.Headers.Add("X-TimeZone", "Eastern Standard Time");
 
                 var response = await _client.SendAsync(request);
 

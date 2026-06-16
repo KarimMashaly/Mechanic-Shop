@@ -94,7 +94,7 @@ namespace MechanicShop.Domain.UnitTests.WorkOrders
             var result = wo.UpdateLabor(Guid.Empty);
 
             Assert.False(result.IsSuccess);
-            Assert.Equal(WorkOrderErrors.LaborIdEmpty(wo.Id.ToString()).Code, result.TopError.Code);
+            Assert.Equal("WorkOrderErrors.LaborIdRequired", result.TopError.Code);
         }
 
         [Fact]

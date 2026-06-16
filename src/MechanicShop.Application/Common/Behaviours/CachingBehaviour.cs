@@ -47,7 +47,8 @@ namespace MechanicShop.Application.Common.Behaviours
                         new HybridCacheEntryOptions
                         {
                             Expiration = cachedRequest.Expiration
-                        }, 
+                        },
+                        tags: cachedRequest.Tags, 
                         cancellationToken: ct);
                 }
             }

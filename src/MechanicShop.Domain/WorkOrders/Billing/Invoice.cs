@@ -51,7 +51,7 @@ namespace MechanicShop.Domain.WorkOrders.Billing
             if (Status != InvoiceStatus.Unpaid)
                 return InvoiceErrors.InvoiceLocked;
 
-            if (DiscountAmount < 0)
+            if (discountAmount < 0)
                 return InvoiceErrors.DiscountNegative;
 
             if (discountAmount > SubTotal)

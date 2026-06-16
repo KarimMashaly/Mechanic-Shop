@@ -4,6 +4,7 @@ using MechanicShop.Application.Features.Scheduling.Dtos;
 using MechanicShop.Application.Features.Scheduling.Queries.GetDailySchedule;
 using MechanicShop.Application.Features.WorkOrders.Commands.AssignLabor;
 using MechanicShop.Application.Features.WorkOrders.Commands.CreateWorkOrder;
+using MechanicShop.Application.Features.WorkOrders.Commands.DeleteWorkOrder;
 using MechanicShop.Application.Features.WorkOrders.Commands.RelocateWorkOrder;
 using MechanicShop.Application.Features.WorkOrders.Commands.UpdateOrderState;
 using MechanicShop.Application.Features.WorkOrders.Commands.UpdateWorkOrderRepairTasks;
@@ -226,6 +227,24 @@ namespace MechanicShop.Api.Controllers
 
             return result.Match(
                  response => Ok(response),
+                 Problem);
+        }
+
+        [HttpDelete("{workOrderId:guid}")]
+        [Authorize(Policy = "ManagerOnly")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [EndpointSummary("Deletes a work order.")]
+        [EndpointDescription("Deletes the specified work order permanently. Only users with the Manager role are authorized.")]
+        [EndpointName("DeleteWorkOrder")]
+        [MapToApiVersion("1.0")]
+        public async Task<IActionResult> Delete(Guid workOrderId, CancellationToken ct)
+        {
+            var result = await sender.Send(new DeleteWorkOrderCommand(workOrderId), ct);
+
+            return result.Match(
+                 _ => NoContent(),
                  Problem);
         }
     }

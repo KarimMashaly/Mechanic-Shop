@@ -23,6 +23,11 @@ namespace MechanicShop.Domain.Employees
 
         public static Result<Employee> Create(Guid id, string firstName, string lastName, Role role)
         {
+            if (id == Guid.Empty)
+            {
+                return EmployeeErrors.IdRequired;
+            }
+
             if (string.IsNullOrWhiteSpace(firstName))
                 return EmployeeErrors.FirstNameRequired;
 

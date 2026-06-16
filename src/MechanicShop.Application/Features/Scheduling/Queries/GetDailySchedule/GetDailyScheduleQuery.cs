@@ -10,10 +10,8 @@ namespace MechanicShop.Application.Features.Scheduling.Queries.GetDailySchedule
         Guid? LaborId = null)
         : ICachedQuery<Result<ScheduleDto>>
     {
-        public string CacheKey => throw new NotImplementedException();
-
-        public string[] Tags => throw new NotImplementedException();
-
-        public TimeSpan Expiration => throw new NotImplementedException();
+        public string CacheKey => $"work-order:{ScheduleDate:yyyy-MM-dd}:labor={LaborId?.ToString() ?? "-"}";
+        public string[] Tags => ["work-order"];
+        public TimeSpan Expiration => TimeSpan.FromMinutes(10);
     }
 }

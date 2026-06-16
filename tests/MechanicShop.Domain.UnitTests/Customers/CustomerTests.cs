@@ -74,7 +74,7 @@ namespace MechanicShop.Domain.UnitTests.Customers
         {
             var customer = CustomerFactory.CreateCustomer().Value;
 
-            var result = customer.Update("Updated Name", "updated@email.com", "1234567890");
+            var result = customer.Update("Updated Name", email:"updated@email.com", phone:"1234567890");
 
             Assert.True(result.IsSuccess);
             Assert.Equal(Result.Updated, result.Value);
@@ -85,7 +85,7 @@ namespace MechanicShop.Domain.UnitTests.Customers
         {
             var customer = CustomerFactory.CreateCustomer().Value;
 
-            var result = customer.Update(string.Empty, "newEmail@localhost", "123-1232");
+            var result = customer.Update(string.Empty, email:"newEmail@localhost", phone:"123-1232");
 
             Assert.True(result.IsError);
         }
@@ -95,7 +95,7 @@ namespace MechanicShop.Domain.UnitTests.Customers
         {
             var customer = CustomerFactory.CreateCustomer().Value;
 
-            var result = customer.Update("New name", "newEmail@localhost", string.Empty);
+            var result = customer.Update("New name", email:"newEmail@localhost", phone:string.Empty);
 
             Assert.True(result.IsError);
         }
@@ -105,7 +105,7 @@ namespace MechanicShop.Domain.UnitTests.Customers
         {
             var customer = CustomerFactory.CreateCustomer().Value;
 
-            var result = customer.Update("New name", string.Empty, "123-1232");
+            var result = customer.Update("New name", email:string.Empty, phone:"123-1232");
 
             Assert.True(result.IsError);
         }
