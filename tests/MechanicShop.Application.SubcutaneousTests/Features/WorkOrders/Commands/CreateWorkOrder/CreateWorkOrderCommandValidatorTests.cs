@@ -18,7 +18,7 @@ namespace MechanicShop.Application.SubcutaneousTests.Features.WorkOrders.Command
         [Fact]
         public void Should_Have_Error_When_VehicleId_Is_Empty()
         {
-            var command = WorkOrderCommandFactory.CreateCreateWorkOrderCommand(vehicleId: Guid.Empty);
+            var command = WorkOrderCommandFactory.CreateCreateWorkOrderCommand(vehicleId: Guid.Empty, startAt: DateTime.UtcNow.Date.AddDays(1).AddHours(12));
 
             var result = _validator.Validate(command);
 

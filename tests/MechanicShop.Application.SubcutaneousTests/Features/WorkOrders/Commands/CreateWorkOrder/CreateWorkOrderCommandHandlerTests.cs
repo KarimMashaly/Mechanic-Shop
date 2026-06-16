@@ -19,6 +19,7 @@ namespace MechanicShop.Application.SubcutaneousTests.Features.WorkOrders.Command
         private readonly IMediator _mediator = factory.CreateMediator();
         private readonly IAppDbContext _context = factory.CreateAppDbContext();
 
+
         [Fact]
         public async Task Handle_WithValidData_ShouldSucceed()
         {
