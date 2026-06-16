@@ -21,7 +21,7 @@ jobs:
         dotnet restore src/MechanicShop.Api/MechanicShop.Api.csproj
         dotnet restore src/MechanicShop.Application/MechanicShop.Application.csproj
         dotnet restore src/MechanicShop.Domain/MechanicShop.Domain.csproj
-        dotnet restore src/MechanciShop.Infrustructure/MechanicShop.Infrustructure.csproj
+        dotnet restore src/MechanicShop.Infrustructure/MechanicShop.Infrustructure.csproj
         dotnet restore src/MechanicShop.Contracts/MechanicShop.Contracts.csproj
         dotnet restore src/MechanicShop.Client/MechanicShop.Client.csproj
 
