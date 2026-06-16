@@ -10,13 +10,23 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '10.0.x'
+
     - name: Restore dependencies
-      run: dotnet restore MechanicShop.slnx
+      run: |
+        dotnet restore src/MechanicShop.Api/MechanicShop.Api.csproj
+        dotnet restore src/MechanicShop.Application/MechanicShop.Application.csproj
+        dotnet restore src/MechanicShop.Domain/MechanicShop.Domain.csproj
+        dotnet restore src/MechanciShop.Infrustructure/MechanciShop.Infrustructure.csproj
+        dotnet restore src/MechanicShop.Contracts/MechanicShop.Contracts.csproj
+        dotnet restore src/MechanicShop.Client/MechanicShop.Client.csproj
+
     - name: Build solution
-      run: dotnet build MechanicShop.slnx --configuration Release --no-restore
+      run: dotnet build src/MechanicShop.Api/MechanicShop.Api.csproj --configuration Release --no-restore
+
     - name: Run tests
-      run: dotnet test MechanicShop.slnx --configuration Release --no-build --verbosity normal
+      run: dotnet test tests/ --configuration Release --no-build --verbosity normal
