@@ -15,8 +15,8 @@ jobs:
       with:
         dotnet-version: '10.0.x'
     - name: Restore dependencies
-      run: dotnet restore MechanicShop.sln
+      run: dotnet restore MechanicShop.slnx
     - name: Build solution
-      run: dotnet build MechanicShop.sln --configuration Release --no-restore
+      run: dotnet build MechanicShop.slnx --configuration Release --no-restore
     - name: Run tests
-      run: dotnet test MechanicShop.sln --configuration Release --no-build --verbosity normal
+      run: dotnet test MechanicShop.slnx --configuration Release --no-build --verbosity normal
