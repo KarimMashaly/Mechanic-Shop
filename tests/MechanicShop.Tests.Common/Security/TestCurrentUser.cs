@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MechanciShop.Infrustructure.Identity;
+using MechanicShop.Application.Common.Interfaces;
 
 namespace MechanicShop.Tests.Common.Security
 {
-    internal class TestCurrentUser
+    public class TestCurrentUser : IUser
     {
+        private AppUser? _currentUser;
+
+        public void Returns(AppUser currentUser)
+        {
+            _currentUser = currentUser;
+        }
+
+        public string? Id => _currentUser!.Id ?? UserFactory.CreateUser().Id;
     }
 }

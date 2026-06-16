@@ -1,7 +1,6 @@
-﻿using MechanicShop.Api.IntegrationTests.Common;
-using Xunit;
+﻿using Xunit;
 
-namespace MechanicShop.Api.IntegrationTests
+namespace MechanicShop.Api.IntegrationTests.Common
 {
     [CollectionDefinition(CollectionName)]
     public class WebAppFactoryCollection : ICollectionFixture<WebAppFactory>
