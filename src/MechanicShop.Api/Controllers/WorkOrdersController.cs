@@ -141,7 +141,7 @@ namespace MechanicShop.Api.Controllers
         {
             var result = await sender.Send(new AssignLaborCommand(
                 workOrderId,
-                request.LaborId),
+                Guid.Parse(request.LaborId)),
                 ct);
 
             return result.Match(
